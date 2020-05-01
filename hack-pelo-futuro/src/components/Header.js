@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logoImg from '../assets/Doeja-Logo.png';
 
-export default function Header({ currentMoney, name, src }) {
+export default function Header({ currentMoney, name, src, buttonIndex }) {
 	return (
 		<header className="header">
 			<div className="imgsize1">
@@ -12,7 +12,7 @@ export default function Header({ currentMoney, name, src }) {
 			<div className="money">
 				<h1>{currentMoney}</h1>
 				<button className="includeMoney" type="submit">
-					Comprar Voucher
+					{buttonIndex}
 				</button>
 			</div>
 			<div className="userActions">

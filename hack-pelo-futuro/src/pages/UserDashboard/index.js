@@ -11,6 +11,7 @@ export default function UserDashboard() {
 				currentMoney="R$ 200,00"
 				name="Stéfano P."
 				src="https://instagram.fmgf1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/13126717_1599645657030812_1837126472_a.jpg?_nc_ht=instagram.fmgf1-1.fna.fbcdn.net&_nc_ohc=Trs7XhArP2gAX-iP5mb&oh=d5ff36fcb02620576359319187fab2e0&oe=5ED53E9B"
+				buttonIndex="Adicionar Dinheiro"
 			/>
 			<h1 className="welcome">Bem vindo Stéfano Pontelli.</h1>
 			<div className="body">

@@ -1,34 +1,31 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 import './styles.css';
 
 import Header from '../../components/Header';
 
-export default  function SupplierDashboard() {
-	 const [contas,Setcontas] = useState(() => {
-    const storageValue = localStorage.getItem('@Doejá:ContaDoador');
-    if (storageValue) {
-      return JSON.parse(storageValue)
-    }
-    return []
-	})
-	console.log(contas.data)	
-	const [voucherUtilizado, setVoucherUtilizado]= useState('')
-	
-	function handleTransaction(e){
-		e.preventDefault();
-		console.log(voucherUtilizado)
-		const VoucherExist = contas.filter(conta=>contas.voucher===voucherUtilizado);	
-		
-		if(VoucherExist){
-			
-			return	console.log("transferencia ok")
+export default function SupplierDashboard() {
+	const [ contas, Setcontas ] = useState(() => {
+		const storageValue = localStorage.getItem('@Doejá:ContaDoador');
+		if (storageValue) {
+			return JSON.parse(storageValue);
 		}
-		return console.log("voucher nao existe")
+		return [];
+	});
+	console.log(contas.data);
+	const [ voucherUtilizado, setVoucherUtilizado ] = useState('');
 
+	function handleTransaction(e) {
+		e.preventDefault();
+		console.log(voucherUtilizado);
+		const VoucherExist = contas.filter(
+			(conta) => contas.voucher === voucherUtilizado
+		);
 
-
-		
+		if (VoucherExist) {
+			return console.log('transferencia ok');
+		}
+		return console.log('voucher nao existe');
 	}
 	return (
 		<div className="container">
@@ -36,6 +33,7 @@ export default  function SupplierDashboard() {
 				currentMoney="R$ 300,00"
 				name="Muffato"
 				src="https://masterambiental.com.br/wp-content/uploads/2012/02/logo-muffato.png"
+				buttonIndex="Adicionar Dinheiro"
 			/>
 			<h1 className="welcome">Bem vindo Muffato</h1>
 			<div className="body">
@@ -57,7 +55,10 @@ export default  function SupplierDashboard() {
 				<div className="line" />
 				<form onSubmit={handleTransaction} className="createDonation">
 					<h1 className="newDonation">Deseja fazer uma retirada?</h1>
-					<input onChange={e=>setVoucherUtilizado(e.target.value)}  placeholder="Valor em Reais"   />
+					<input
+						onChange={(e) => setVoucherUtilizado(e.target.value)}
+						placeholder="Valor em Reais"
+					/>
 					<label>Em qual conta deseja receber?</label>
 					<select>
 						<option value="Santander">Santander</option>

@@ -11,6 +11,7 @@ export default function DonatorDashboard() {
 				currentMoney="R$ 1000,00"
 				name="Gabriel G."
 				src="https://instagram.fmgf1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/15624041_926883944111729_4279141544105082880_a.jpg?_nc_ht=instagram.fmgf1-1.fna.fbcdn.net&_nc_ohc=WEjqE5q2HvQAX_rDB3W&oh=38e2192a72b5d2b9d2fc315f8316bb96&oe=5ED6DDA8"
+				buttonIndex="Comprar Voucher"
 			/>
 			<h1 className="welcome">Bem vindo Gabriel Guilherme.</h1>
 			<div className="body">
