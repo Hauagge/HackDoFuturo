@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+import Routes from './routes/index'
+
 import './App.css';
+
 
 function App() {
   return (
-    <div>
-     
-    </div>
+   <Routes/>
   );
 }
 

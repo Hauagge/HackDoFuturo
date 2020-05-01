@@ -1,7 +1,11 @@
 import React,{useState,useEffect } from 'react'
 
-const Deposito: React.FC= () =>{
+const Deposito=()=>{
   const [total, setToltal] = useState('');
+
+  async function handleRepository(e){
+
+  }
 
 
   
@@ -14,6 +18,9 @@ const Deposito: React.FC= () =>{
     <button type="submit">Depositar</button>
 
     </form>
-    </input>
+    </>
+   
   )
 }
+
+export default Deposito;
