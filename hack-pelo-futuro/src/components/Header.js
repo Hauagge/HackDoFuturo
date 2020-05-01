@@ -11,9 +11,9 @@ export default function Header({ currentMoney, name, src, buttonIndex }) {
 			</div>
 			<div className="money">
 				<h1>{currentMoney}</h1>
-				<button className="includeMoney" type="submit">
+				<Link className="includeMoney" to="/bill">
 					{buttonIndex}
-				</button>
+				</Link>
 			</div>
 			<div className="userActions">
 				<h1>{name}</h1>
