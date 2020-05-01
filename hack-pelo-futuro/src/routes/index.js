@@ -1,14 +1,18 @@
-import React from 'react'
-import {Switch, Route} from 'react-router-dom'
-import Deposito from '../pages/Deposito/index'
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import Deposito from '../pages/Deposito/index';
+import SignIn from '../pages/SignIn/index';
 
 // import DashBoard from '../pages/dashboard/index'
 // import Repository from '../pages/repository/index'
 
-const Routes= ()=>(
-  <Switch>
-    
-    <Route path="/deposito"  component={Deposito}/>
-  </Switch>
-)
+const Routes = () => (
+	<BrowserRouter>
+		<Switch>
+			<Route path="/deposito" component={Deposito} />
+			<Route path="/signin" component={SignIn} />
+		</Switch>
+	</BrowserRouter>
+);
 export default Routes;

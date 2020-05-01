@@ -1,0 +1,7 @@
+.logo-container {
+	height: 100vh;
+	max-width: 100vw;
+
+	display: flex;
+	align-items: stretch;
+}
