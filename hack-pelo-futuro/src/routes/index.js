@@ -14,7 +14,7 @@ import UserDashboard from '../pages/UserDashboard/index';
 const Routes = () => (
 	<BrowserRouter>
 		<Switch>
-			<Route path="/deposito" component={Deposito} />
+			<Route path="/" exact component={Deposito} />
 			<Route path="/signin" component={SignIn} />
 			<Route path="/signup" component={SignUp} />
 			<Route path="/donator" component={DonatorDashboard} />

@@ -3,46 +3,75 @@ import { format } from 'date-fns';
 import crypto from 'crypto'
 
 
-import Header from '../../components/Header';
 
+
+import Header from '../../components/Header'
+  
   const Deposito = () => {
+  
+
+
+  
   const [valor, setValor] = useState({
+    id:2,
     Voucher:'',
-    Quantia:'',
+    Quantia:0,
     Data:Date
   });
-  const [valoresDepositdados, setValoresDepositdados] = useState(() => {
-    const storageValue = localStorage.getItem('@Doejá:ContaDoador');
-    if (storageValue) {
-      return JSON.parse(storageValue)
+    const [valoresDepositdados, setValoresDepositdados] = useState(() => {
+      const storageValue = localStorage.getItem('@Doeja:ContaDoador');
+      if (storageValue) {
+        return JSON.parse(storageValue)
+      }
+      return []
+    });
+
+  const [contas, setContas] = useState(() => {
+    const storageConta = localStorage.getItem('@Doeja:Conta');
+    if (storageConta) {
+      return JSON.parse(storageConta)
     }
-    return []
+    return [
+      {
+        id:1,
+        saldo:0,
+        name:'Muffato'
+      },
+
+      {
+        id:2,
+        saldo:0,
+        name:'Gabriel'
+      }
+    ]
   });
   const [popupVisible, setPopupVisible] = useState(false);
   const [totalEmCaixa, setTotalEmcaixa] = useState(0);
   const [depositos, setDepositos] = useState(()=>{
     return valoresDepositdados.map(valor=>valor.quantia)
   });
-  useEffect(()=>{},[])
+  
+
   useEffect(() => {
     
     setTotalEmcaixa(() => {
      
       if(depositos){
-      return depositos.reduce((sum, value) => {
+        const conta = contas.find(cliente=>cliente.id===2)
+        conta.saldo =depositos.reduce((sum, value) => {        
         return Number(sum) + Number(value);
-      }, 0);}
+      }, 0);
+      return conta.saldo
+    }
       return 
     })
-    localStorage.setItem('@Doejá:ContaDoador', JSON.stringify(valoresDepositdados))
+    localStorage.setItem('@Doeja:ContaDoador', JSON.stringify(valoresDepositdados))
+    localStorage.setItem('@Doeja:Conta', JSON.stringify(contas))
   }, [valor])
+  
 
   async function handleRepository(e) {
     e.preventDefault();
-   
-    console.log(depositos)
-    
-    
     setValoresDepositdados([...valoresDepositdados, valor])
     setDepositos([...depositos, valor.quantia])
     setValor()
@@ -66,15 +95,14 @@ import Header from '../../components/Header';
                 type='number'
                 placeholder="Digite o Valor para Depósito"
                 onChange={(e) => setValor({
+                  id:2,
                   voucher:crypto.randomBytes(5).toString('HEX'),
                   quantia: e.target.value,
                   Data:format(Date.now(), 'dd/MM/YYY')
                   })} />
               <button
                 className="button"
-                onClick={() => {
-                  setPopupVisible(true)
-                }}
+              
                 type="submit">Depositar</button>
             </form>
           </div>
@@ -86,6 +114,7 @@ import Header from '../../components/Header';
             <ul>
             { valoresDepositdados.map(deposito=>(
                 <li key={deposito.voucher}>
+                <p> ID: {deposito.id}</p>
                 <strong>
                   Deposito de: R$ {deposito.quantia} - {deposito.Data}
 								</strong>

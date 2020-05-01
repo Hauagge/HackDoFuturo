@@ -1,34 +1,69 @@
 import React,{useState} from 'react';
 
+import Conta from '../conta/index'
 import './styles.css';
 
 import Header from '../../components/Header';
 
+
+
 export default  function SupplierDashboard() {
 	 const [contas,Setcontas] = useState(() => {
-    const storageValue = localStorage.getItem('@Doejá:ContaDoador');
+    const storageValue = localStorage.getItem('@Doeja:ContaDoador');
     if (storageValue) {
       return JSON.parse(storageValue)
     }
     return []
-	})
-	console.log(contas.data)	
+	});
+
+	const [contasUsuario, setContasUsuario] = useState(() => {
+    const storageConta = localStorage.getItem('@Doeja:Conta');
+    if (storageConta) {
+      return JSON.parse(storageConta)
+    }
+    return [
+      {
+        id:1,
+        saldo:0,
+        name:'Muffato'
+      },
+
+      {
+        id:2,
+        saldo:0,
+        name:'Gabriel'
+      }
+    ]
+  });
+	
 	const [voucherUtilizado, setVoucherUtilizado]= useState('')
 	
 	function handleTransaction(e){
 		e.preventDefault();
-		console.log(voucherUtilizado)
-		const VoucherExist = contas.filter(conta=>contas.voucher===voucherUtilizado);	
+		console.log(contas)
 		
-		if(VoucherExist){
+		let VoucherExist = contas.find(contaVoucher=>contaVoucher.voucher===voucherUtilizado)
+	
+		if(!VoucherExist){
+			return console.log("voucher nao existe")
 			
-			return	console.log("transferencia ok")
 		}
-		return console.log("voucher nao existe")
-
-
-
 		
+		
+
+		const contaCliente = contasUsuario.find(cliente=>cliente.id===VoucherExist.id)
+		const conta = contasUsuario.find(cliente=>cliente.id===1)
+		contaCliente.saldo = contaCliente.saldo -  Number(VoucherExist.quantia);
+		conta.saldo = conta.saldo + Number(VoucherExist.quantia);
+		console.table(contasUsuario)
+		localStorage.setItem('@Doeja:Conta', JSON.stringify(contasUsuario))
+		const contas2 = contas.filter(contaVoucher=>contaVoucher.voucher!==voucherUtilizado);
+		localStorage.setItem('@Doeja:ContaDoador', JSON.stringify(contas2))
+		
+	
+		
+
+		return	console.log("transferencia ok")
 	}
 	return (
 		<div className="container">
@@ -57,7 +92,7 @@ export default  function SupplierDashboard() {
 				<div className="line" />
 				<form onSubmit={handleTransaction} className="createDonation">
 					<h1 className="newDonation">Deseja fazer uma retirada?</h1>
-					<input onChange={e=>setVoucherUtilizado(e.target.value)}  placeholder="Valor em Reais"   />
+					<input onChange={e=>setVoucherUtilizado(e.target.value)}  placeholder="Voucher"   />
 					<label>Em qual conta deseja receber?</label>
 					<select>
 						<option value="Santander">Santander</option>
