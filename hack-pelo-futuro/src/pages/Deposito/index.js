@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 import crypto from 'crypto'
 
 
@@ -35,7 +35,7 @@ import Header from '../../components/Header';
       return 
     })
     localStorage.setItem('@Doejá:ContaDoador', JSON.stringify(valoresDepositdados))
-  }, [valor,valoresDepositdados])
+  }, [valor])
 
   async function handleRepository(e) {
     e.preventDefault();
@@ -76,13 +76,7 @@ import Header from '../../components/Header';
                   setPopupVisible(true)
                 }}
                 type="submit">Depositar</button>
-
-
-
             </form>
-
-            
-
           </div>
         </div>
         

@@ -1,10 +1,35 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 import './styles.css';
 
 import Header from '../../components/Header';
 
-export default function SupplierDashboard() {
+export default  function SupplierDashboard() {
+	 const [contas,Setcontas] = useState(() => {
+    const storageValue = localStorage.getItem('@Doejá:ContaDoador');
+    if (storageValue) {
+      return JSON.parse(storageValue)
+    }
+    return []
+	})
+	console.log(contas.data)	
+	const [voucherUtilizado, setVoucherUtilizado]= useState('')
+	
+	function handleTransaction(e){
+		e.preventDefault();
+		console.log(voucherUtilizado)
+		const VoucherExist = contas.filter(conta=>contas.voucher===voucherUtilizado);	
+		
+		if(VoucherExist){
+			
+			return	console.log("transferencia ok")
+		}
+		return console.log("voucher nao existe")
+
+
+
+		
+	}
 	return (
 		<div className="container">
 			<Header
@@ -30,9 +55,9 @@ export default function SupplierDashboard() {
 					</div>
 				</div>
 				<div className="line" />
-				<div className="createDonation">
+				<form onSubmit={handleTransaction} className="createDonation">
 					<h1 className="newDonation">Deseja fazer uma retirada?</h1>
-					<input placeholder="Valor em Reais" type="number" min="0" />
+					<input onChange={e=>setVoucherUtilizado(e.target.value)}  placeholder="Valor em Reais"   />
 					<label>Em qual conta deseja receber?</label>
 					<select>
 						<option value="Santander">Santander</option>
@@ -42,7 +67,7 @@ export default function SupplierDashboard() {
 					<button className="donate" type="submit">
 						Receber dinheiro
 					</button>
-				</div>
+				</form>
 			</div>
 		</div>
 	);

@@ -111,8 +111,9 @@
 	flex-direction: column;
 }
 
-input {
+form input {
 	width: 100%;
+	max-width: 500px;
 	height: 60px;
 	color: #333;
 	border: 1px solid #dcdce6;
