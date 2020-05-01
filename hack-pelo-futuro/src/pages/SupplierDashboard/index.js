@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 import Conta from '../conta/index'
 import './styles.css';
@@ -71,6 +71,7 @@ export default  function SupplierDashboard() {
 				currentMoney="R$ 300,00"
 				name="Muffato"
 				src="https://masterambiental.com.br/wp-content/uploads/2012/02/logo-muffato.png"
+				buttonIndex="Adicionar Dinheiro"
 			/>
 			<h1 className="welcome">Bem vindo Muffato</h1>
 			<div className="body">

@@ -1,0 +1,20 @@
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+.wellcome {
+	font-size: 80;
+}
+
+.container input {
+	width: 600px;
+	height: 60px;
+	color: #333;
+	border: 1px solid #dcdce6;
+	border-radius: 8px;
+	padding: 0 24px;
+	margin-bottom: 5px;
+}

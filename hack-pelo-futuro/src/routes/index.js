@@ -7,6 +7,7 @@ import SignUp from '../pages/SignUp/index';
 import DonatorDashboard from '../pages/DonatorDashboard/index';
 import SupplierDashboard from '../pages/SupplierDashboard/index';
 import UserDashboard from '../pages/UserDashboard/index';
+import GenerateBill from '../pages/GenerateBill/index';
 
 // import DashBoard from '../pages/dashboard/index'
 // import Repository from '../pages/repository/index'
@@ -20,6 +21,7 @@ const Routes = () => (
 			<Route path="/donator" component={DonatorDashboard} />
 			<Route path="/supplier" component={SupplierDashboard} />
 			<Route path="/user" component={UserDashboard} />
+			<Route path="/bill" component={GenerateBill} />
 		</Switch>
 	</BrowserRouter>
 );
