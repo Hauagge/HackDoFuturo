@@ -11,16 +11,9 @@ import UserDashboard from '../pages/UserDashboard/index';
 // import DashBoard from '../pages/dashboard/index'
 // import Repository from '../pages/repository/index'
 
-const Routes = () => (
-	<BrowserRouter>
-		<Switch>
-			<Route path="/deposito" component={Deposito} />
-			<Route path="/signin" component={SignIn} />
-			<Route path="/signup" component={SignUp} />
-			<Route path="/donator" component={DonatorDashboard} />
-			<Route path="/supplier" component={SupplierDashboard} />
-			<Route path="/user" component={UserDashboard} />
-		</Switch>
-	</BrowserRouter>
-);
+const Routes= ()=>(
+  <Switch>
+    <Route path="/deposito"  component={Deposito}/>
+  </Switch>
+)
 export default Routes;
