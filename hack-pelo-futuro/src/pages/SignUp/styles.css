@@ -18,7 +18,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	width: 100%;
 }
 
@@ -36,4 +36,9 @@
 	font-size: 32px;
 	margin-bottom: 32px;
 	text-align: center;
+}
+
+.logon-container section.form form select {
+	font-size: 24px;
+	margin-bottom: 16px;
 }
