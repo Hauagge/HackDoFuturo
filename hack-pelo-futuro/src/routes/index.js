@@ -7,7 +7,6 @@ import Deposito from '../pages/Deposito/index'
 
 const Routes= ()=>(
   <Switch>
-    
     <Route path="/deposito"  component={Deposito}/>
   </Switch>
 )
