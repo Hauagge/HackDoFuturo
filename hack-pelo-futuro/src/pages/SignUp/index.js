@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {useHistory } from 'react-router-dom'
 
 import './styles.css';
 
 import logoImg from '../../assets/Doeja-Logo.png';
 
 export default function SignUp() {
+	const history = useHistory();
 	const [contasUsuario, setContasUsuario] = useState(() => {
 		const storageConta = localStorage.getItem('@Doeja:Conta');
 		if (storageConta) {
@@ -40,6 +42,8 @@ export default function SignUp() {
 		} catch (error) {
 			console.log(error)
 		}
+		window.alert('Cadastro Criado com sucesso')
+		history.push('/')
 	}
 
 
