@@ -64,7 +64,7 @@ export default function SupplierDashboard(props) {
 	}
 
 	const getContaById = (id) => {
-		return contasUsuario.find(cliente => cliente.id === id)
+		return contasUsuario.find(cliente => cliente.id == id)
 	}
 
 	return (
@@ -81,7 +81,7 @@ export default function SupplierDashboard(props) {
 					<h2 className="donatorDonations">Transações:</h2>
 					<div className="card">
 						<ul>
-							{contasRecebidas.map((contaRecebida, index) => (
+							{contasRecebidas.filter(conta=>conta.idDestino==usuario.id).map((contaRecebida, index) => (
 								<li key={index}>
 									<strong>
 										Valor Recebido: R$ {contaRecebida.quantidade} - {contaRecebida.data}

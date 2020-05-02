@@ -21,7 +21,7 @@ const Routes = () => (
 			<Route path="/donator/:id" component={DonatorDashboard} />
 			<Route path="/supplier/:id" component={SupplierDashboard} />
 			<Route path="/user/:id" component={UserDashboard} />
-			<Route path="/bill" component={GenerateBill} />
+			<Route path="/bill/:id" component={GenerateBill} />
 		</Switch>
 	</BrowserRouter>
 );

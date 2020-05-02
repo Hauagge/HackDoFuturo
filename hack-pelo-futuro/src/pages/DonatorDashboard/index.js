@@ -27,7 +27,7 @@ export default function DonatorDashboard(props) {
 
 	useEffect(() => {
 		let id = props.match.params.id
-		const usuario = contasUsuario.find(conta => conta.id)
+		const usuario = contasUsuario.find(conta => conta.id==id)
 		setUsuario(usuario)
 	}, [])
 
@@ -40,7 +40,7 @@ export default function DonatorDashboard(props) {
 	}
 
 	const getContaById = (id) => {
-		return contasUsuario.find(cliente => cliente.id === id) || {}
+		return contasUsuario.find(cliente => cliente.id == id) || {}
 	}
 
 	const transferencia = () => {

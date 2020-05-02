@@ -16,7 +16,7 @@ export default function GenerateBill(props) {
 
 	useEffect(() => {
 		let id = props.match.params.id
-		const usuario = contasUsuario.find(conta => conta.id)
+		const usuario = contasUsuario.find(conta => conta.id==id)
 		setUsuario(usuario)
 	}, [])
 
