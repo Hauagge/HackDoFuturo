@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logoImg from '../assets/Doeja-Logo.png';
 
-export default function Header({ currentMoney, name, src, buttonIndex, id }) {
+export default function Header({ currentMoney, name, src, buttonIndex, id, type }) {
 	return (
 		<header className="header">
 			<div className="imgsize1">
@@ -11,9 +11,9 @@ export default function Header({ currentMoney, name, src, buttonIndex, id }) {
 			</div>
 			<div className="money">
 				<h1>{currentMoney}</h1>
-				<Link className="includeMoney" to={`/bill/${id}`}>
+				{(type!=null &&type ==='Doador') && <Link className="includeMoney" to={`/bill/${id}`}>
 					{buttonIndex}
-				</Link>
+				</Link>}
 			</div>
 			<div className="userActions">
 				<h1>{name}</h1>

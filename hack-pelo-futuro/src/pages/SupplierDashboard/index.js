@@ -70,7 +70,7 @@ export default function SupplierDashboard(props) {
 	return (
 		<div className="container">
 			<Header
-				currentMoney={usuario.saldo}
+				currentMoney={`R$ ${usuario.saldo}`}
 				name={usuario.name}
 				src="https://masterambiental.com.br/wp-content/uploads/2012/02/logo-muffato.png"
 				buttonIndex="Adicionar Dinheiro"

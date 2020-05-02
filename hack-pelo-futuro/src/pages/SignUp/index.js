@@ -27,6 +27,7 @@ export default function SignUp() {
 	}
 
 	const submit = (e) => {
+		e.preventDefault()
 		try {
 			if (!dados.name && !dados.email && !dados.password && !dados.tipo) {
 				return;

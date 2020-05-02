@@ -76,6 +76,7 @@ export default function DonatorDashboard(props) {
 				name={usuario.name}
 				src="https://image.flaticon.com/icons/svg/1077/1077063.svg"
 				buttonIndex="Comprar Voucher"
+				type='Doador'
 			/>
 			<h1 className="welcome">Bem vindo {usuario.name}</h1>
 			<div className="body">
