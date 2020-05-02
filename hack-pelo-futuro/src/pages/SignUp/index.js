@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './styles.css';
@@ -6,29 +6,66 @@ import './styles.css';
 import logoImg from '../../assets/Doeja-Logo.png';
 
 export default function SignUp() {
+	const [contasUsuario, setContasUsuario] = useState(() => {
+		const storageConta = localStorage.getItem('@Doeja:Conta');
+		if (storageConta) {
+			return JSON.parse(storageConta)
+		}
+		return []
+	});
+
+	const [dados, setDados] = useState({
+		type:'Doador'
+	})
+
+	function handleCadastro(e) {
+		const value = e.target.value;
+		setDados({
+			...dados,
+			[e.target.name]: value
+		})
+	}
+
+	const submit = (e) => {
+		try {
+			if (!dados.name && !dados.email && !dados.password && !dados.tipo) {
+				return;
+			}
+			dados.id = contasUsuario.length +1
+			dados.saldo = 0
+			let array = [...contasUsuario, dados]
+			setContasUsuario(array)
+			localStorage.setItem('@Doeja:Conta', JSON.stringify(array))
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+
+
 	return (
 		<div className="logon-container">
 			<section className="form">
 				<img src={logoImg} alt="logoDoeja" />
 
-				<form>
+				<form onSubmit={submit}>
 					<h1>Faça seu cadastro</h1>
 
-					<select>
-						<option value="Doador">Doador</option>
+					<select name={"type"} onChange={handleCadastro}>
+						<option selected value="Doador">Doador</option>
 						<option value="Fornecedor">Fornecedor</option>
-						<option value="Usuario">Usuário</option>
+						<option  value="Usuario">Usuário</option>
 					</select>
 
-					<input placeholder="Nome" />
-					<input placeholder="E-mail" />
-					<input placeholder="Senha" />
+					<input name={"name"} onChange={handleCadastro} placeholder="Nome" />
+					<input name={"email"} type="email" onChange={handleCadastro} placeholder="E-mail" />
+					<input name={"password"} type="password" onChange={handleCadastro} placeholder="Senha" />
 
 					<button className="button" type="submit">
 						Cadastrar
 					</button>
 
-					<Link className="back-link" to="/signin">
+					<Link className="back-link" to="/">
 						Voltar para entrada.
 					</Link>
 				</form>

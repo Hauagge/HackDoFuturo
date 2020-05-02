@@ -42,6 +42,11 @@ import Header from '../../components/Header'
         id:2,
         saldo:0,
         name:'Gabriel'
+      },
+      {
+        id:3,
+        saldo:0,
+        name:'Stefano'
       }
     ]
   });
@@ -81,11 +86,7 @@ import Header from '../../components/Header'
 
   return (
     <>
-      <Header
-        currentMoney={`R$ ${totalEmCaixa}`}
-        name="Gabriel G."
-        src="https://instagram.fmgf1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/15624041_926883944111729_4279141544105082880_a.jpg?_nc_ht=instagram.fmgf1-1.fna.fbcdn.net&_nc_ohc=WEjqE5q2HvQAX_rDB3W&oh=38e2192a72b5d2b9d2fc315f8316bb96&oe=5ED6DDA8"
-      />
+    
       <div className="container" >
         <h2 className="welcome"> Depósito</h2>
         <div className="body">

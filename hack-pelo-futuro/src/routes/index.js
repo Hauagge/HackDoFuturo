@@ -15,12 +15,12 @@ import GenerateBill from '../pages/GenerateBill/index';
 const Routes = () => (
 	<BrowserRouter>
 		<Switch>
-			<Route path="/" exact component={Deposito} />
-			<Route path="/signin" component={SignIn} />
+			<Route path="/deposito"  component={Deposito} />
+			<Route path="/"exact component={SignIn} />
 			<Route path="/signup" component={SignUp} />
-			<Route path="/donator" component={DonatorDashboard} />
-			<Route path="/supplier" component={SupplierDashboard} />
-			<Route path="/user" component={UserDashboard} />
+			<Route path="/donator/:id" component={DonatorDashboard} />
+			<Route path="/supplier/:id" component={SupplierDashboard} />
+			<Route path="/user/:id" component={UserDashboard} />
 			<Route path="/bill" component={GenerateBill} />
 		</Switch>
 	</BrowserRouter>

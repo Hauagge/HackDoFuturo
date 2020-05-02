@@ -1,0 +1,11 @@
+00:00 ~01:00 - Planejamento
+01:00~02:00 - função de incluir dinheiro front
+02:00~03:00 - função de listar transações, visualizar quantia depositada
+03:00 ~04:00 - Função retira dinhero (mercado)
+		lança o numero do voucher, verificar existencia do voucher, passar dados bancarios do mercado
+04:00 ~ 05:00 -  Transferir Dinheiro (doador para vítima)
+
+
+Transferencia de dinheiro:
+App/web vai precisa de uma conta bancaria para realizar transações de transferencia para  o banco e tb os fornecedores.
+vai ser necessário API com os bancos para realizar as transações.

@@ -1,11 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory  } from 'react-router-dom';
+
 
 import './styles.css';
 
 import logoImg from '../../assets/Doeja-Logo.png';
 
 export default function SignIn() {
+	const [contasUsuario, setContasUsuario] = useState(() => {
+		const storageConta = localStorage.getItem('@Doeja:Conta');
+		if (storageConta) {
+			return JSON.parse(storageConta)
+		}
+		return []
+	});
+	const history = useHistory();
+	const [user, setUser] = useState({})
+	function handleLogin(e) {
+		const value = e.target.value;
+		setUser({
+			...user,
+			[e.target.name]: value
+		})
+	}
+
+	const Submit = ()=>{
+		const UserExist = contasUsuario.find(usuario=> (usuario.name===user.email || usuario.email===user.email) && 
+			 usuario.password === user.password);
+		if(!UserExist){
+			window.alert("Usuario ou Senha não existe")
+		}else{
+			if(UserExist.type==='Doador'){
+				history.push(`/donator/${UserExist.id}`);
+			}
+			else if(UserExist.type==='Fornecedor'){
+				history.push(`/supplier/${UserExist.id}`);
+			}
+			else if(UserExist.type==='Usuario'){
+				history.push(`/user/${UserExist.id}`);
+			}
+			
+		}
+	}
+
+
 	return (
 		<div className="logon-container">
 			<section className="imgsize1">
@@ -16,12 +54,16 @@ export default function SignIn() {
 			</section>
 			<section className="form">
 				<img src={logoImg} alt="logoDoeja" />
+				<Link to='/deposito'>Depósito</Link>
+		
+			
+			
 
-				<form>
+				<form onSubmit={Submit}>
 					<h1>Entre na plataforma</h1>
 
-					<input placeholder="E-mail ou usuário" />
-					<input placeholder="Senha" />
+					<input onChange={handleLogin} name={"email"} placeholder="E-mail ou usuário" />
+					<input onChange={handleLogin} name={"password"}type="password" placeholder="Senha" />
 
 					<button className="button" type="submit">
 						Entrar
