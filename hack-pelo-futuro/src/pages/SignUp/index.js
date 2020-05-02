@@ -49,7 +49,7 @@ export default function SignUp() {
 			<section className="form">
 				<img src={logoImg} alt="logoDoeja" />
 
-				<form onSubmit={submit}>
+				
 					<h1>Faça seu cadastro</h1>
 
 					<select name={"type"} onChange={handleCadastro}>
@@ -62,14 +62,14 @@ export default function SignUp() {
 					<input name={"email"} type="email" onChange={handleCadastro} placeholder="E-mail" />
 					<input name={"password"} type="password" onChange={handleCadastro} placeholder="Senha" />
 
-					<button className="button" type="submit">
+					<button onClick={submit} className="button" type="submit">
 						Cadastrar
 					</button>
 
 					<Link className="back-link" to="/">
 						Voltar para entrada.
 					</Link>
-				</form>
+				
 			</section>
 			<section className="imgsize1">
 				<img
