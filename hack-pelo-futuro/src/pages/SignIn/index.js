@@ -24,7 +24,7 @@ export default function SignIn() {
 		})
 	}
 
-	const Submit = ()=>{
+	const submit = ()=>{
 		const UserExist = contasUsuario.find(usuario=> (usuario.name===user.email || usuario.email===user.email) && 
 			 usuario.password === user.password);
 		if(!UserExist){
@@ -56,23 +56,19 @@ export default function SignIn() {
 				<img src={logoImg} alt="logoDoeja" />
 				<Link to='/deposito'>Depósito</Link>
 		
-			
-			
-
-				<form onSubmit={Submit}>
 					<h1>Entre na plataforma</h1>
 
 					<input onChange={handleLogin} name={"email"} placeholder="E-mail ou usuário" />
 					<input onChange={handleLogin} name={"password"}type="password" placeholder="Senha" />
 
-					<button className="button" type="submit">
+					<button onClick={submit}className="button" type="submit">
 						Entrar
 					</button>
 
 					<Link className="back-link" to="/signup">
 						Não tenho Cadastro.
 					</Link>
-				</form>
+				
 			</section>
 		</div>
 	);
