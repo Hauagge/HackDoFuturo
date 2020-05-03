@@ -54,7 +54,6 @@ export default function SignIn() {
 			</section>
 			<section className="form">
 				<img src={logoImg} alt="logoDoeja" />
-				<Link to='/deposito'>Depósito</Link>
 		
 					<h1>Entre na plataforma</h1>
 

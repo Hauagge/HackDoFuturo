@@ -29,21 +29,29 @@ export default function SignUp() {
 	}
 
 	const submit = (e) => {
-		
-		try {
-			if (!dados.name && !dados.email && !dados.password && !dados.tipo) {
-				return;
+
+		const nomeExist = contasUsuario.find(cliente => cliente.name===dados.name);
+		const emailExist = contasUsuario.find(cliente => cliente.email===dados.email);
+		console.log( )
+		if(!nomeExist && !emailExist){
+			try {
+				if (!dados.name && !dados.email && !dados.password && !dados.tipo) {
+					return;
+				}
+				dados.id = contasUsuario.length +1
+				dados.saldo = 0
+				let array = [...contasUsuario, dados]
+				setContasUsuario(array)
+				localStorage.setItem('@Doeja:Conta', JSON.stringify(array))
+				window.alert('Cadastro Criado com sucesso')
+				history.push('/')
+			}catch (error) {
+				console.log(error)
 			}
-			dados.id = contasUsuario.length +1
-			dados.saldo = 0
-			let array = [...contasUsuario, dados]
-			setContasUsuario(array)
-			localStorage.setItem('@Doeja:Conta', JSON.stringify(array))
-		} catch (error) {
-			console.log(error)
 		}
-		window.alert('Cadastro Criado com sucesso')
-		history.push('/')
+		return window.alert('Esta conta ja existe');;
+		
+
 	}
 
 

@@ -99,7 +99,7 @@ export default function UserDashboard(props) {
 					<h2 className="donatorDonations">Doações Recebidas:</h2>
 					<div className="card">
 						<ul>
-							{	valoresDepositdados.map((deposito, index) => (
+							{	valoresDepositdados.filter(valor => valor.idDestino === usuario.id).map((deposito, index) => (
 								<li key={index}>
 									<strong>
 										Doação de: R$ {deposito.quantidade} - {deposito.data}
